@@ -22,10 +22,29 @@
             justify-content: center;
             align-items: center;
             font-family: sans-serif;
-            background: url('background.jpg') no-repeat center center fixed;
+            color: white;
+            overflow: hidden;
+            background-image: url('background.jpg');
             background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
         }
         
+        body::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('snow.gif');
+            background-repeat: repeat;
+            opacity: 0.6;
+            z-index: 0;
+            pointer-events: none;
+        }
+
         body::before {
             content: "";
             position: absolute;
@@ -33,8 +52,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: -1;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
         }
 
         h1 {
@@ -42,6 +61,8 @@
             text-transform: uppercase;
             color: #fff;
             letter-spacing: 5px;
+            z-index: 2;
+            position: relative;
             text-shadow: 
                 0 0 5px #fff,
                 0 0 10px #fff,
